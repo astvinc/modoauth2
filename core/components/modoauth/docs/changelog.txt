@@ -1,0 +1,5 @@
+Changelog file for ModoAuth2 component.
+ 
+ModoAuth 1.0
+====================================
+- Initial attempt to create a oAuth2 provider in ModX

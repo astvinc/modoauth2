@@ -1,12 +1,24 @@
 <?php
 
-$_lang['setting_modoauth.api_key'] = 'Shopify API Key';
-$_lang['setting_modoauth.api_key_desc'] = 'The API key from Shopify. To acquire this, you will have to create a private application in your shop\'s admin interface.';
-$_lang['setting_modoauth.auth_secret'] = 'Shopify Auth Secret';
-$_lang['setting_modoauth.auth_secret_desc'] = 'The authentication secret from Shopify. To acquire this, you will have to create a private application in your shop\'s admin interface. Inside shopify it is called "Password".';
-$_lang['setting_modshopify.auth_token'] = 'Shopify Authentication Token';
-$_lang['setting_modshopify.auth_token_desc'] = 'The authentication token from Shopify. To acquire this, you will have to create a private application in your shop\'s admin interface. Inside shopify it is called "Shared Secret".';
-$_lang['setting_modshopify.shop_domain'] = 'Shopify Shop Domain';
-$_lang['setting_modshopify.shop_domain_desc'] = 'The domain of your Shop without http(s), e.g. my-sample-shop.myshopify.com';
-$_lang['setting_modshopify.multipass_secret'] = 'Shopify Multipass Secret';
-$_lang['setting_modshopify.multipass_secret_desc'] = 'The multipass secret from Shopify. To acquire this, you need  to enable multipass functionality on shopify.';
+$_lang['modoauth'] = 'Mod-oAuth';
+$_lang['modoauth'] = 'Mod-oAuth';
+$_lang['modoauth.desc'] = 'Manage your oAuth2 clients here.';
+$_lang['modoauth.description'] = 'Description';
+$_lang['modoauth.client_err_ae'] = 'A client with that ID already exists.';
+$_lang['modoauth.client_err_nf'] = 'Client not found.';
+$_lang['modoauth.client_err_ns'] = 'Client not specified.';
+$_lang['modoauth.client_err_ns_name'] = 'Please specify a ID for the client.';
+$_lang['modoauth.client_err_remove'] = 'An error occurred while trying to remove the client.';
+$_lang['modoauth.client_err_save'] = 'An error occurred while trying to save the client.';
+$_lang['modoauth.client_create'] = 'Create New Client';
+$_lang['modoauth.client_remove'] = 'Remove Client';
+$_lang['modoauth.client_remove_confirm'] = 'Are you sure you want to remove this client?';
+$_lang['modoauth.client_update'] = 'Update Client';
+$_lang['modoauth.location'] = 'Location';
+$_lang['modoauth.management'] = 'Client Management';
+$_lang['modoauth.management_desc'] = 'Manage your oAuth2 clients here. You can edit them by either double-clicking on the grid or right-clicking on the respective row.';
+$_lang['modoauth.name'] = 'Name';
+$_lang['modoauth.id'] = 'ID';
+$_lang['modoauth.secret'] = 'Secret';
+$_lang['modoauth.redirect'] = 'Redirect';
+$_lang['modoauth.search...'] = 'Search...';
