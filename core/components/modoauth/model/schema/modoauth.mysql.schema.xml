@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<model package="modoauth" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM">
+   
+    <object class="Clients" table="oauth_clients" extends="xPDOSimpleObject">
+        <field key="client_id" dbtype="varchar" precision="80" phptype="string" null="false" default=""  />
+        <field key="client_secret" dbtype="varchar" precision="80" phptype="string" null="false" default=""  />
+        <field key="redirect_uri" dbtype="varchar" precision="2000" phptype="string" null="false" default="" />
+        <index alias="id" name="client_id" primary="true" unique="true" type="BTREE">
+            <column key="client_id" length="" collation="A" null="false" />
+        </index>
+    </object>
+    
+    <object class="Tokens" table="oauth_access_tokens" extends="xPDOSimpleObject">
+        <field key="user_id" dbtype="varchar" precision="255" phptype="string" null="true" default=""  />
+        <field key="client_id" dbtype="varchar" precision="80" phptype="string" null="false" default=""  />
+        <field key="access_token" dbtype="varchar" precision="40" phptype="string" null="false" default=""  />
+        <field key="scope" dbtype="varchar" precision="2000" phptype="string" null="true" default="" />
+        <field key="expires" dbtype="timestamp" phptype="timestamp" null="false"/>
+        <index alias="access_token" name="access_token" primary="true" unique="true" type="BTREE">
+            <column key="access_token" length="" collation="A" null="false" />
+        </index>
+    </object>
+    
+    <object class="AuthCodes" table="oauth_authorization_codes" extends="xPDOSimpleObject">
+        <field key="user_id" dbtype="varchar" precision="255" phptype="string" null="true" default=""  />
+        <field key="client_id" dbtype="varchar" precision="80" phptype="string" null="false" default=""  />
+        <field key="authorization_code" dbtype="varchar" precision="40" phptype="string" null="false" default=""  />
+        <field key="redirect_uri" dbtype="varchar" precision="2000" phptype="string" null="true" default="" />
+        <field key="scope" dbtype="varchar" precision="2000" phptype="string" null="true" default="" />
+        <field key="expires" dbtype="timestamp" phptype="timestamp" null="false"/>
+        <index alias="authorization_code" name="authorization_code" primary="true" unique="true" type="BTREE">
+            <column key="authorization_code" length="" collation="A" null="false" />
+        </index>
+    </object>
+    
+    <object class="RefreshTokens" table="oauth_refresh_tokens" extends="xPDOSimpleObject">
+        <field key="user_id" dbtype="varchar" precision="255" phptype="string" null="true" default=""  />
+        <field key="client_id" dbtype="varchar" precision="80" phptype="string" null="false" default=""  />
+        <field key="refresh_token" dbtype="varchar" precision="40" phptype="string" null="false" default=""  />
+        <field key="scope" dbtype="varchar" precision="2000" phptype="string" null="true" default="" />
+        <field key="expires" dbtype="timestamp" phptype="timestamp" null="false"/>
+        <index alias="refresh_token" name="refresh_token" primary="true" unique="true" type="BTREE">
+            <column key="refresh_token" length="" collation="A" null="false" />
+        </index>
+    </object>
+    
+</model>
