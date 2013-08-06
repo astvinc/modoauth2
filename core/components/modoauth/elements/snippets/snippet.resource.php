@@ -7,4 +7,38 @@ if (!$server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
     $server->getResponse()->send();
     die;
 }
-echo json_encode(array('success' => true, 'message' => 'You accessed my APIs!'));
+
+//Return profile resource
+$token = $server->getAccessTokenData(OAuth2\Request::createFromGlobals());
+$userId = $token['user_id'];
+
+error_log('User id: '.$userId);
+
+if (empty($userId)){
+    
+    echo json_encode(array('success' => false, 'message' => 'There is no user id associated with this token'));
+    
+}else{
+    $user = $modx->getObject('modUser',$userId);
+    $profile = $user->getOne('Profile');
+
+    if($user && $profile){
+
+        $data = array(
+            "username"=>$user->get('username'),
+            "active"=>$user->get('active'),
+            "fullname"=>$profile->get('fullname'),
+            "email"=>$profile->get('email'),
+            "gender"=>$profile->get('gender'),
+            "dob"=>$profile->get('dob'),
+            "extended"=>$profile->get('extended')
+        );
+
+        echo json_encode(array('success' => true, 'profile'=>$data));
+
+    }else{
+
+        echo json_encode(array('success' => false, 'message' => 'Profile data could not be retrieved'));
+
+    }
+}

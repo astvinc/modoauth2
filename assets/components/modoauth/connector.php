@@ -5,7 +5,7 @@ require_once MODX_CORE_PATH.'config/'.MODX_CONFIG_KEY.'.inc.php';
 require_once MODX_CONNECTORS_PATH.'index.php';
  
 $corePath = $modx->getOption('modoauth.core_path',null,$modx->getOption('core_path').'components/modoauth/');
-require_once $corePath.'model/modoauth/clients.class.php';
+require_once $corePath.'model/modoauth/modoauth.class.php';
 $modx->modoauth = new ModoAuth($modx);
  
 $modx->lexicon->load('modoauth:default');

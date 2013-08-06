@@ -1,2 +1,2 @@
 
-[[!Login? &loginResourceId=[[+modoAuthLoginResourceId]] &loginTpl=[[+modoAuthLoginTpl]]]]
+[[!Login? &loginResourceId=[[+authResourceId]] &loginTpl=[[+loginTpl]]]]

@@ -8,7 +8,7 @@ set_time_limit(0);
 define('PKG_NAME','ModoAuth');
 define('PKG_NAME_LOWER','modoauth');
 define('PKG_VERSION','1.0');
-define('PKG_RELEASE','beta4');
+define('PKG_RELEASE','beta7');
  
 /* define build paths */
 $root = dirname(dirname(__FILE__)).'/';
@@ -45,6 +45,18 @@ $builder->registerNamespace(PKG_NAME_LOWER,false,true,'{core_path}components/'.P
 $category= $modx->newObject('modCategory');
 $category->set('id',1);
 $category->set('category',PKG_NAME);
+
+
+/* add chunks */
+$modx->log(modX::LOG_LEVEL_INFO,'Packaging in chunks...');
+$chunks = include $sources['data'].'transport.chunks.php';
+if (is_array($chunks)) {
+  $category->addMany($chunks, 'Chunks');
+} else { $modx->log(modX::LOG_LEVEL_FATAL,'Adding chunks failed.'); }
+$modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($chunks).' chunks.'); flush();
+unset($chunks);
+
+
  
 /* add snippets */
 $modx->log(modX::LOG_LEVEL_INFO,'Packaging in snippets...');
@@ -59,6 +71,11 @@ $attr = array(
     xPDOTransport::UPDATE_OBJECT => true,
     xPDOTransport::RELATED_OBJECTS => true,
     xPDOTransport::RELATED_OBJECT_ATTRIBUTES => array (
+        'Chunks' => array(
+            xPDOTransport::PRESERVE_KEYS => false,
+            xPDOTransport::UPDATE_OBJECT => true,
+            xPDOTransport::UNIQUE_KEY => 'name',
+        ),
         'Snippets' => array(
             xPDOTransport::PRESERVE_KEYS => false,
             xPDOTransport::UPDATE_OBJECT => true,

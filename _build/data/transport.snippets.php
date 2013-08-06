@@ -6,6 +6,17 @@ function getSnippetContent($filename) {
 }
 $snippets = array();
  
+$snippets[0]= $modx->newObject('modSnippet');
+$snippets[0]->fromArray(array(
+    'id' => 1,
+    'name' => 'Server',
+    'description' => 'Initial Configuration of oAuth Server and Storage.',
+    'snippet' => getSnippetContent($sources['elements'].'snippets/snippet.server.php'),
+),'',true,true);
+$properties = include $sources['data'].'properties/properties.server.php';
+$snippets[0]->setProperties($properties);
+unset($properties);
+
 $snippets[1]= $modx->newObject('modSnippet');
 $snippets[1]->fromArray(array(
     'id' => 2,
@@ -20,7 +31,7 @@ unset($properties);
 
 $snippets[2]= $modx->newObject('modSnippet');
 $snippets[2]->fromArray(array(
-    'id' => 2,
+    'id' => 3,
     'name' => 'Token',
     'description' => 'Grants Token.',
     'snippet' => getSnippetContent($sources['elements'].'snippets/snippet.token.php'),
@@ -31,7 +42,7 @@ unset($properties);
 
 $snippets[3]= $modx->newObject('modSnippet');
 $snippets[3]->fromArray(array(
-    'id' => 3,
+    'id' => 4,
     'name' => 'Resource',
     'description' => 'Grants Resources.',
     'snippet' => getSnippetContent($sources['elements'].'snippets/snippet.resource.php'),
