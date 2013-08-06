@@ -12,8 +12,6 @@ if (!$server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
 $token = $server->getAccessTokenData(OAuth2\Request::createFromGlobals());
 $userId = $token['user_id'];
 
-error_log('User id: '.$userId);
-
 if (empty($userId)){
     
     echo json_encode(array('success' => false, 'message' => 'There is no user id associated with this token'));
