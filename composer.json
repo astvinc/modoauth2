@@ -3,3 +3,25 @@
         "bshaffer/oauth2-server-php": "dev-develop"
     }
 }
+
+
+
+modoauth-clientid-a451f2d2a8f94de784fa3f9fee813567
+
+http://localhost:5000/ediets-live/?id=6&response_type=code&client_id=testclient&state=xyz
+
+http://localhost:5000/modx-modoauth/?id=2&response_type=code&client_id=testclient&state=xyz
+
+
+
+
+curl -u testclient:testpass http://localhost:5000/modx-modoauth/?id=5 -d 'access_token=3c04be55051fd90afdcd9979360d09d59bf222d3'
+curl -u testclient:testpass http://localhost:5000/modx-modoauth/index.php?id=4 -d 'grant_type=authorization_code&code=822a0ce48e570fd1908c1f5bad324bfd9e3044ab'
+
+
+
+https://oauth-vanessa.fwd.wf/ediets-live/?id=6&XDEBUG_SESSION_START=netbeans-xdebug
+
+https://oauth-vanessa.fwd.wf/ediets-live/?id=4&XDEBUG_SESSION_START=netbeans-xdebug
+
+INSERT INTO modx_oauth_clients (client_id, client_secret, redirect_uri) VALUES ("testclient", "testpass", "https://developers.google.com/oauthplayground");
