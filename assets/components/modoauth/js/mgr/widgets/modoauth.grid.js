@@ -4,29 +4,31 @@ ModoAuth.grid.ModoAuth = function(config) {
         id: 'modoauth-grid-modoauth'
         ,url: ModoAuth.config.connectorUrl
         ,baseParams: { action: 'mgr/modoauth/getList' }
-        ,fields: ['id','name','description','menu']
+        ,fields: ['client_id','client_secret','redirect_uri']
         ,paging: true
         ,remoteSort: true
         ,anchor: '97%'
         ,autoExpandColumn: 'name'
         ,columns: [{
-            header: _('id')
-            ,dataIndex: 'id'
-            ,sortable: true
-            ,width: 60
-        },{
-            header: _('modoauth.name')
-            ,dataIndex: 'name'
+            header: _('modoauth.client.id')
+            ,dataIndex: 'client_id'
             ,sortable: true
             ,width: 100
             ,editor: { xtype: 'textfield' }
         },{
-            header: _('modoauth.description')
-            ,dataIndex: 'description'
+            header: _('modoauth.client.secret')
+            ,dataIndex: 'client_secret'
+            ,sortable: false
+            ,width: 100
+            ,editor: { xtype: 'textfield' }
+        },{
+            header: _('modoauth.client.redirect')
+            ,dataIndex: 'redirect_uri'
             ,sortable: false
             ,width: 350
             ,editor: { xtype: 'textfield' }
-        }]
+        }
+    ]
     });
     ModoAuth.grid.ModoAuth.superclass.constructor.call(this,config)
 };
