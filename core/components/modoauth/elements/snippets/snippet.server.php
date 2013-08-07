@@ -11,7 +11,7 @@ ini_set('display_errors',1);error_reporting(E_ALL);
 
 // Autoloading (composer is preferred, but for this example let's just do this)
 //require 'vendor/autoload.php';
-require_once('vendor/bshaffer/oauth2-server-php/src/OAuth2/Autoloader.php');
+require 'vendor/autoload.php';
 OAuth2_Autoloader::register();
 
 // $dsn is the Data Source Name for your database, for exmaple "mysql:dbname=my_oauth2_db;host=localhost"

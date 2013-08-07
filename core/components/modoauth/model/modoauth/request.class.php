@@ -1,12 +1,13 @@
 <?php
-use OAuth2\Request;
+require 'vendor/autoload.php';
+OAuth2_Autoloader::register();
 
 /**
  * Extend Request class to handle outh params stored in session
  *
  * @author vramirez
  */
-class ModoAuthRequest extends Request{
+class ModoAuthRequest extends OAuth2_Request{
     
      /**
      * Creates a new request with values from PHP's super globals and using $_SESSION to retrieve oAuth params.
