@@ -3,7 +3,7 @@
 $defaultCorePath = $modx->getOption('core_path').'components/modoauth/';
 $modaouthCorePath = $modx->getOption('modoauth.core_path',null,$defaultCorePath);
 
-require_once $modaouthCorePath.'elements/snippets/snippet.server.php';
+require $modaouthCorePath.'elements/snippets/snippet.server.php';
 require $modaouthCorePath.'model/modoauth/request.class.php';
 
 // Read properties
@@ -29,7 +29,7 @@ if (!($modoauth instanceof ModoAuth)) return '';
 
 //Creating request and response. Request is an extended class of oAuth2\Request
 $request = ModoAuthRequest::createFromGlobals();
-$response = new OAuth2\Response();
+$response = new OAuth2_Response();
 
 // validate the authorize request
 if (!$server->validateAuthorizeRequest($request, $response)) {

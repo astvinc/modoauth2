@@ -8,7 +8,7 @@ set_time_limit(0);
 define('PKG_NAME','ModoAuth');
 define('PKG_NAME_LOWER','modoauth');
 define('PKG_VERSION','1.0');
-define('PKG_RELEASE','beta8');
+define('PKG_RELEASE','beta9');
  
 /* define build paths */
 $root = dirname(dirname(__FILE__)).'/';

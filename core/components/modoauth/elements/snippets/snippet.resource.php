@@ -6,13 +6,13 @@ $modaouthCorePath = $modx->getOption('modoauth.core_path',null,$defaultCorePath)
 require_once $modaouthCorePath.'elements/snippets/snippet.server.php';
 
 // Handle a request for an OAuth2.0 Access Token and send the response to the client
-if (!$server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
+if (!$server->verifyResourceRequest(OAuth2_Request::createFromGlobals(), new OAuth2_Response())) {
     $server->getResponse()->send();
     die;
 }
 
 //Return profile resource
-$token = $server->getAccessTokenData(OAuth2\Request::createFromGlobals());
+$token = $server->getAccessTokenData(OAuth2_Request::createFromGlobals(), new OAuth2_Response());
 $userId = $token['user_id'];
 
 if (empty($userId)){

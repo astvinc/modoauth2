@@ -6,16 +6,16 @@ function getSnippetContent($filename) {
 }
 $snippets = array();
  
-$snippets[0]= $modx->newObject('modSnippet');
-$snippets[0]->fromArray(array(
-    'id' => 1,
-    'name' => 'Server',
-    'description' => 'Initial Configuration of oAuth Server and Storage.',
-    'snippet' => getSnippetContent($sources['elements'].'snippets/snippet.server.php'),
-),'',true,true);
-$properties = include $sources['data'].'properties/properties.server.php';
-$snippets[0]->setProperties($properties);
-unset($properties);
+//$snippets[0]= $modx->newObject('modSnippet');
+//$snippets[0]->fromArray(array(
+//    'id' => 1,
+//    'name' => 'Server',
+//    'description' => 'Initial Configuration of oAuth Server and Storage.',
+//    'snippet' => getSnippetContent($sources['elements'].'snippets/snippet.server.php'),
+//),'',true,true);
+//$properties = include $sources['data'].'properties/properties.server.php';
+//$snippets[0]->setProperties($properties);
+//unset($properties);
 
 $snippets[1]= $modx->newObject('modSnippet');
 $snippets[1]->fromArray(array(
