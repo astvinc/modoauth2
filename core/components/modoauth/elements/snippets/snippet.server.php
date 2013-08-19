@@ -1,9 +1,12 @@
 <?php
-//Get this from modx
-$dsn      = 'mysql:dbname=modx;host=localhost';
-$username = 'root';
-$password = 'root';
+$defaultCorePath = $modx->getOption('core_path').'components/modoauth/';
+$modaouthCorePath = $modx->getOption('modoauth.core_path',null,$defaultCorePath);
 
+
+include(MODX_CORE_PATH.'config/config.inc.php');
+$dsn      = $database_dsn;
+$username = $database_user;
+$password = $database_password;
 
 
 // error reporting (this is a demo, after all!)
@@ -11,7 +14,7 @@ ini_set('display_errors',1);error_reporting(E_ALL);
 
 // Autoloading (composer is preferred, but for this example let's just do this)
 //require 'vendor/autoload.php';
-require 'vendor/autoload.php';
+require $modaouthCorePath.'include/OAuth2/Autoloader.php';
 OAuth2_Autoloader::register();
 
 // $dsn is the Data Source Name for your database, for exmaple "mysql:dbname=my_oauth2_db;host=localhost"
@@ -27,7 +30,8 @@ $storage = new OAuth2_Storage_Pdo(array('dsn' => $dsn, 'username' => $username, 
 
 
 // Pass a storage object or array of storage objects to the OAuth2 server class
-$server = new OAuth2_Server($storage, array('enforce_state' => false));
+$server = new OAuth2_Server($storage, array('enforce_state' => false, 'require_exact_redirect_uri'=>false));
+
 
 // Add the "Client Credentials" grant type (it is the simplest of the grant types)
 $server->addGrantType(new OAuth2_GrantType_ClientCredentials($storage));
@@ -38,9 +42,7 @@ $server->addGrantType(new OAuth2_GrantType_AuthorizationCode($storage));
 // configure your available scopes
 $defaultScope = 'basic';
 $supportedScopes = array(
-  'basic',
-  'postonwall',
-  'accessphonenumber'
+  'basic'
 );
 $memory = new OAuth2_Storage_Memory(array(
   'default_scope' => $defaultScope,

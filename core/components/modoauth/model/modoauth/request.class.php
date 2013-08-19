@@ -1,6 +1,8 @@
 <?php
-require 'vendor/autoload.php';
-OAuth2_Autoloader::register();
+$defaultCorePath = $modx->getOption('core_path').'components/modoauth/';
+$modaouthCorePath = $modx->getOption('modoauth.core_path',null,$defaultCorePath);
+require $modaouthCorePath.'include/OAuth2/Request.php';
+
 
 /**
  * Extend Request class to handle outh params stored in session
@@ -29,13 +31,16 @@ class ModoAuthRequest extends OAuth2_Request{
         $clientKey = 'modoauth-clientid';
         $resTypeKey = 'modoauth-responsetype';
         $stateKey = 'modoauth-state';
-        
+        $redirectUri = 'modoauth-redirect-uri';
+
         if(isset($_SESSION['modoauth'])){
             $oauthParams = $_SESSION['modoauth'];
             $OAUTH_PARAMS = array(
                 "client_id"=>$oauthParams[$clientKey],
                 "response_type"=>$oauthParams[$resTypeKey],
-                "state"=>$oauthParams[$stateKey]
+                "state"=>$oauthParams[$stateKey],
+                "redirect_uri"=>$oauthParams[$redirectUri],
+                
             );
         }
         

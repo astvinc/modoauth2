@@ -50,7 +50,8 @@ if($modx->user->isAuthenticated('web') ){
     $_SESSION['modoauth']= array(
       'modoauth-clientid' => $request->query('client_id'),
       'modoauth-responsetype'=>$request->query('response_type'),
-      'modoauth-state'=>$request->query('state')
+      'modoauth-state'=>$request->query('state'),
+      'modoauth-redirect-uri'=>$request->query('redirect_uri')
     );
     
     //Prompt login form

@@ -22,6 +22,8 @@ if (empty($userId)){
 }else{
     $user = $modx->getObject('modUser',$userId);
     $profile = $user->getOne('Profile');
+    
+  
 
     if($user && $profile){
 
@@ -31,7 +33,7 @@ if (empty($userId)){
             "fullname"=>$profile->get('fullname'),
             "email"=>$profile->get('email'),
             "gender"=>$profile->get('gender'),
-            "dob"=>$profile->get('dob'),
+            "dob"=>gmdate("Y-m-d\TH:i:s\Z", $profile->get('dob')),
             "extended"=>$profile->get('extended')
         );
 
