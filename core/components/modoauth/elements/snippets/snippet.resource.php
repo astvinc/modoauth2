@@ -28,6 +28,7 @@ if (empty($userId)){
     if($user && $profile){
 
         $data = array(
+            "id"=>$userId,
             "username"=>$user->get('username'),
             "active"=>$user->get('active'),
             "fullname"=>$profile->get('fullname'),

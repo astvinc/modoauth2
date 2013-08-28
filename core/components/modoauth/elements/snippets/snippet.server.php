@@ -30,7 +30,8 @@ $storage = new OAuth2_Storage_Pdo(array('dsn' => $dsn, 'username' => $username, 
 
 
 // Pass a storage object or array of storage objects to the OAuth2 server class
-$server = new OAuth2_Server($storage, array('enforce_state' => false, 'require_exact_redirect_uri'=>false));
+//Lifetime set to 24 hours
+$server = new OAuth2_Server($storage, array('enforce_state' => false, 'require_exact_redirect_uri'=>false, 'access_lifetime'=>86400));
 
 
 // Add the "Client Credentials" grant type (it is the simplest of the grant types)
